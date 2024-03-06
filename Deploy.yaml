@@ -1,15 +1,3 @@
-# keda-installation.yaml
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: keda
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: keda
-  namespace: keda
----
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
