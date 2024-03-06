@@ -1,0 +1,21 @@
+# aws-cloudwatch-scaledobject.yaml
+apiVersion: keda.k8s.io/v1alpha1
+kind: ScaledObject
+metadata:
+  name: aws-cloudwatch-scaledobject
+spec:
+  scaleTargetRef:
+    deploymentName: your-deployment-name
+  triggers:
+  - type: aws-cloudwatch
+    metadata:
+      awsRegion: your-aws-region
+      secretKeyRef:
+        name: aws-credentials
+        key: aws-secret-access-key
+      accessKeyIDRef:
+        name: aws-credentials
+        key: aws-access-key-id
+      namespace: your-namespace
+      metricName: "CPUUtilization" # or any other CloudWatch metric
+      threshold: "50" # Adjust the threshold as needed
